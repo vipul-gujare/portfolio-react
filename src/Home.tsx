@@ -8,7 +8,6 @@ export const Home = () => {
     <div
       style={{
         backgroundColor: Colors.DARK,
-        display: "flex",
         flex: 1,
         color: Colors.TEXT_LIGHT_ACTIVE,
       }}
