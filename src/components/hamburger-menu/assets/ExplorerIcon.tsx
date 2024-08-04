@@ -1,4 +1,4 @@
-import { IconProps } from "../../types";
+import { IconProps } from "../../../types";
 
 export const ExplorerIcon = ({ fill }: IconProps) => {
   return (
