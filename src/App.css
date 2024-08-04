@@ -10,3 +10,8 @@
 #root div {
   display: flex;
 }
+
+#root .dropdown-hoverable:hover {
+  background-color: #2b2d2e;
+  cursor: pointer;
+}
