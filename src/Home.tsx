@@ -10,6 +10,7 @@ export const Home = () => {
         backgroundColor: Colors.DARK,
         display: "flex",
         flex: 1,
+        color: Colors.TEXT_LIGHT_ACTIVE,
       }}
     >
       <HamburgerMenu />
