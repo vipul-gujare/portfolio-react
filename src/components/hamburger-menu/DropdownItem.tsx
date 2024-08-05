@@ -2,24 +2,26 @@ import { useState } from "react";
 import { Colors } from "../../constants";
 import { ChevronDownIcon } from "./assets/ChevronDownIcon";
 
-export type IDropdownItem =
+export type IDropdownItem = {
+  title: string;
+  nestingLevel?: number;
+  initialIsOpen?: boolean;
+} & (
   | {
-      title: string;
       items: IDropdownItem[];
       icon?: never;
-      initialIsOpen?: boolean;
     }
   | {
-      title: string;
       icon: JSX.Element;
-      initialIsOpen?: boolean;
       items?: never;
-    };
+    }
+);
 
 export const DropdownItem = ({
   title,
   icon,
   initialIsOpen = false,
+  nestingLevel = 0,
   items,
 }: IDropdownItem) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
@@ -27,7 +29,14 @@ export const DropdownItem = ({
   return (
     <>
       <div
-        style={{ gap: "0.2rem", alignItems: "center", flexDirection: "row" }}
+        style={{
+          gap: "0.2rem",
+          alignItems: "center",
+          flexDirection: "row",
+          ...(nestingLevel && {
+            paddingLeft: `calc(${nestingLevel} * 16px)`,
+          }),
+        }}
         className="dropdown-hoverable"
         {...(hasItems && {
           role: "button",
@@ -35,9 +44,11 @@ export const DropdownItem = ({
         })}
       >
         <div
-          style={{
-            transform: `rotate(${isOpen ? "0deg" : "-90deg"})`,
-          }}
+          {...(hasItems && {
+            style: {
+              transform: `rotate(${isOpen ? "0deg" : "-90deg"})`,
+            },
+          })}
         >
           {hasItems ? (
             <ChevronDownIcon fill={Colors.TEXT_LIGHT_ACTIVE} />
@@ -50,7 +61,6 @@ export const DropdownItem = ({
       {hasItems && isOpen && (
         <div
           style={{
-            padding: "16px 0.5rem",
             flexDirection: "column",
           }}
         >
@@ -61,6 +71,7 @@ export const DropdownItem = ({
               key={title + index}
               items={items}
               initialIsOpen={initialIsOpen}
+              nestingLevel={nestingLevel + 1}
             />
           ))}
         </div>
