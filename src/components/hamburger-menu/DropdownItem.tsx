@@ -37,6 +37,10 @@ export const DropdownItem = ({
           ...(nestingLevel && {
             paddingLeft: `calc(${nestingLevel} * 16px)`,
           }),
+          ...(nestingLevel === 0 &&
+            hasItems && {
+              fontWeight: "bold",
+            }),
         }}
         className="dropdown-hoverable"
         {...(hasItems && {
