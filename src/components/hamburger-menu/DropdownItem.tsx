@@ -79,6 +79,7 @@ export const DropdownItem = ({
             }}
           ></div>
           {items.map(({ icon, title, items, initialIsOpen }, index) => (
+            // @ts-expect-error Type '{ title: string; icon: Element | undefined; initialIsOpen: boolean | undefined; items: IDropdownItem[] | undefined; key: string; }' is not assignable to type 'IntrinsicAttributes & IDropdownItem'.
             <DropdownItem
               title={title}
               icon={icon}
