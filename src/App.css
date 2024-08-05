@@ -22,15 +22,7 @@
   --line-number-color: #6d7681;
   --line-number-padding: 0 0.5em;
   --line-number-margin: 0.5em;
-  counter-reset: line 1;
-}
-
-pre.main-container-editable::before {
-  content: "1";
-  display: inline-block;
-  padding: var(--line-number-padding);
-  margin-right: var(--line-number-margin);
-  color: var(--line-number-color);
+  counter-reset: line 0;
 }
 
 pre.main-container-editable div {
