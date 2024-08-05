@@ -33,6 +33,7 @@ export const DropdownItem = ({
           gap: "0.2rem",
           alignItems: "center",
           flexDirection: "row",
+          padding: "0.2rem",
           ...(nestingLevel && {
             paddingLeft: `calc(${nestingLevel} * 16px)`,
           }),
