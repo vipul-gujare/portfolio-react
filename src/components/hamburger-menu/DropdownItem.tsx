@@ -63,8 +63,18 @@ export const DropdownItem = ({
         <div
           style={{
             flexDirection: "column",
+            position: "relative",
           }}
         >
+          <div
+            style={{
+              borderLeft: `1px solid #3D3E3F`,
+              height: "100%",
+              marginLeft: `calc(${nestingLevel + 1} * 0.65rem)`,
+              position: "absolute",
+              zIndex: 1,
+            }}
+          ></div>
           {items.map(({ icon, title, items, initialIsOpen }, index) => (
             <DropdownItem
               title={title}
