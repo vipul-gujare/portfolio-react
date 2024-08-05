@@ -48,19 +48,18 @@ export const DropdownItem = ({
           onClick: () => setIsOpen((prev) => !prev),
         })}
       >
-        <div
-          {...(hasItems && {
-            style: {
+        {hasItems ? (
+          <div
+            style={{
               transform: `rotate(${isOpen ? "0deg" : "-90deg"})`,
-            },
-          })}
-        >
-          {hasItems ? (
+            }}
+          >
             <ChevronDownIcon fill={Colors.TEXT_LIGHT_ACTIVE} />
-          ) : (
-            icon
-          )}
-        </div>
+          </div>
+        ) : (
+          icon
+        )}
+
         {title}
       </div>
       {hasItems && isOpen && (
