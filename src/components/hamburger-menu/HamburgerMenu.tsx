@@ -1,7 +1,28 @@
 import { Colors } from "../../constants";
 import { Dropdown } from "./Dropdown";
+import { IDropdownItem } from "./DropdownItem";
+import { CloudIcon } from "./assets/CloudIcon";
 import { ExplorerIcon } from "./assets/ExplorerIcon";
 import { InfoIcon } from "./assets/InfoIcon";
+import { MobileIcon } from "./assets/MobileIcon";
+
+const Work: IDropdownItem = {
+  title: "Work",
+  items: [
+    {
+      title: "Tim Hortons",
+      icon: <MobileIcon fill={Colors.ICON_BLUE} />,
+    },
+    {
+      title: "NPH Technologies",
+      icon: <CloudIcon fill={Colors.ICON_BLUE} />,
+    },
+    {
+      title: "Zeus Learning",
+      icon: <CloudIcon fill={Colors.ICON_BLUE} />,
+    },
+  ],
+};
 
 export const HamburgerMenu = () => {
   return (
@@ -36,9 +57,18 @@ export const HamburgerMenu = () => {
           borderStyle: "solid",
           padding: "0.5rem",
           flexDirection: "column",
+          width: "15vw",
         }}
       >
-        <div style={{ textTransform: "uppercase" }}>Explorer</div>
+        <div
+          style={{
+            textTransform: "uppercase",
+            fontSize: "0.75rem",
+            padding: "0.5rem 0.2rem",
+          }}
+        >
+          Explorer
+        </div>
         <Dropdown
           items={[
             {
@@ -46,26 +76,10 @@ export const HamburgerMenu = () => {
               initialIsOpen: true,
               items: [
                 {
-                  title: "About",
-                  icon: <InfoIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
+                  title: "About Me",
+                  icon: <InfoIcon fill={Colors.ICON_BLUE} />,
                 },
-                {
-                  title: "Work",
-                  items: [
-                    {
-                      title: "Tim Hortons",
-                      icon: <InfoIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
-                    },
-                    {
-                      title: "NPH Technologies",
-                      icon: <InfoIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
-                    },
-                    {
-                      title: "Zeus Learning",
-                      icon: <InfoIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
-                    },
-                  ],
-                },
+                { ...Work },
               ],
             },
           ]}
