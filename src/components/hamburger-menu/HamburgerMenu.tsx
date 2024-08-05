@@ -5,9 +5,13 @@ import { CloudIcon } from "./assets/CloudIcon";
 import { ExplorerIcon } from "./assets/ExplorerIcon";
 import { InfoIcon } from "./assets/InfoIcon";
 import { MobileIcon } from "./assets/MobileIcon";
+import { FilePdfIcon } from "./assets/FilePdfIcon";
+import { CodeWindowIcon } from "./assets/CodeWindowIcon";
+import { JsonIcon } from "./assets/JsonIcon";
 
 const Work: IDropdownItem = {
   title: "Work",
+  initialIsOpen: true,
   items: [
     {
       title: "Tim Hortons",
@@ -22,6 +26,36 @@ const Work: IDropdownItem = {
       icon: <CloudIcon fill={Colors.ICON_BLUE} />,
     },
   ],
+};
+
+const Education: IDropdownItem = {
+  title: "Education",
+  initialIsOpen: true,
+  items: [
+    {
+      title: "Post Graduate Diploma",
+      icon: <CodeWindowIcon fill={Colors.ICON_PURPLE} />,
+    },
+    {
+      title: "Bachelors of Engineering",
+      icon: <CodeWindowIcon fill={Colors.ICON_PURPLE} />,
+    },
+  ],
+};
+
+const Resume: IDropdownItem = {
+  title: "Resume.pdf",
+  icon: <FilePdfIcon fill={Colors.ICON_RED} />,
+};
+
+const About: IDropdownItem = {
+  title: "ABOUT_ME.md",
+  icon: <InfoIcon fill={Colors.ICON_BLUE} />,
+};
+
+const Skills: IDropdownItem = {
+  title: "Skills.json",
+  icon: <JsonIcon fill={Colors.ICON_YELLOW} />,
 };
 
 export const HamburgerMenu = () => {
@@ -57,7 +91,7 @@ export const HamburgerMenu = () => {
           borderStyle: "solid",
           padding: "0.5rem",
           flexDirection: "column",
-          width: "15vw",
+          width: "20vw",
         }}
       >
         <div
@@ -75,11 +109,11 @@ export const HamburgerMenu = () => {
               title: "PORTFOLIO",
               initialIsOpen: true,
               items: [
-                {
-                  title: "About Me",
-                  icon: <InfoIcon fill={Colors.ICON_BLUE} />,
-                },
                 { ...Work },
+                { ...Education },
+                { ...Resume },
+                { ...About },
+                { ...Skills },
               ],
             },
           ]}
