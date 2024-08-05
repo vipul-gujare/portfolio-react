@@ -11,7 +11,37 @@
   display: flex;
 }
 
+/*************************** Hamburger menu ****************************/
 #root .dropdown-hoverable:hover {
   background-color: #2b2d2e;
   cursor: pointer;
+}
+
+/*************************** Editable container ****************************/
+#root pre.main-container-editable {
+  --line-number-color: #6d7681;
+  --line-number-padding: 0 0.5em;
+  --line-number-margin: 0.5em;
+  counter-reset: line 1;
+}
+
+pre.main-container-editable::before {
+  content: "1";
+  display: inline-block;
+  padding: var(--line-number-padding);
+  margin-right: var(--line-number-margin);
+  color: var(--line-number-color);
+}
+
+pre.main-container-editable div {
+  line-height: 1.5rem;
+  counter-increment: line;
+}
+
+pre.main-container-editable div::before {
+  content: counter(line);
+  display: inline-block;
+  padding: var(--line-number-padding);
+  margin-right: var(--line-number-margin);
+  color: var(--line-number-color);
 }
