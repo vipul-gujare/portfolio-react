@@ -1,6 +1,8 @@
 import { Colors } from "../constants";
+import { useMainContainerContext } from "../state/useMainContainerContext";
 
 export const MainContainer = () => {
+  const { selectedText } = useMainContainerContext();
   return (
     <div
       style={{
@@ -17,7 +19,12 @@ export const MainContainer = () => {
           width: "100%",
         }}
       >
-        Lorem Ipsum
+        {selectedText
+          ?.trim()
+          .split("\n")
+          .map((singleLineText) => (
+            <div key={singleLineText}>{singleLineText}</div>
+          ))}
       </pre>
     </div>
   );

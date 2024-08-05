@@ -6,13 +6,16 @@ export type IDropdownItem = {
   title: string;
   nestingLevel?: number;
   initialIsOpen?: boolean;
+  onPress?: (textContent: string) => void;
 } & (
   | {
       items: IDropdownItem[];
       icon?: never;
+      textToDisplay?: never;
     }
   | {
       icon: JSX.Element;
+      textToDisplay: string;
       items?: never;
     }
 );
@@ -23,9 +26,20 @@ export const DropdownItem = ({
   initialIsOpen = false,
   nestingLevel = 0,
   items,
+  onPress,
+  textToDisplay,
 }: IDropdownItem) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
   const hasItems = !!items?.length;
+  const handlePress = () => {
+    if (onPress && textToDisplay) {
+      onPress(textToDisplay);
+      return;
+    }
+    if (hasItems) {
+      setIsOpen((prev) => !prev);
+    }
+  };
   return (
     <>
       <div
@@ -43,10 +57,14 @@ export const DropdownItem = ({
             }),
         }}
         className="dropdown-hoverable"
-        {...(hasItems && {
-          role: "button",
-          onClick: () => setIsOpen((prev) => !prev),
-        })}
+        tabIndex={0}
+        role="button"
+        onClick={handlePress}
+        onKeyUp={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            handlePress();
+          }
+        }}
       >
         {hasItems ? (
           <div
@@ -59,7 +77,6 @@ export const DropdownItem = ({
         ) : (
           icon
         )}
-
         {title}
       </div>
       {hasItems && isOpen && (
@@ -78,17 +95,21 @@ export const DropdownItem = ({
               zIndex: 1,
             }}
           ></div>
-          {items.map(({ icon, title, items, initialIsOpen }, index) => (
-            // @ts-expect-error Type '{ title: string; icon: Element | undefined; initialIsOpen: boolean | undefined; items: IDropdownItem[] | undefined; key: string; }' is not assignable to type 'IntrinsicAttributes & IDropdownItem'.
-            <DropdownItem
-              title={title}
-              icon={icon}
-              key={title + index}
-              items={items}
-              initialIsOpen={initialIsOpen}
-              nestingLevel={nestingLevel + 1}
-            />
-          ))}
+          {items.map(
+            ({ icon, title, items, initialIsOpen, textToDisplay }, index) => (
+              // @ts-expect-error Type '{ title: string; icon: Element | undefined; initialIsOpen: boolean | undefined; items: IDropdownItem[] | undefined; key: string; }' is not assignable to type 'IntrinsicAttributes & IDropdownItem'.
+              <DropdownItem
+                title={title}
+                icon={icon}
+                key={title + index}
+                items={items}
+                initialIsOpen={initialIsOpen}
+                nestingLevel={nestingLevel + 1}
+                onPress={onPress}
+                textToDisplay={textToDisplay}
+              />
+            )
+          )}
         </div>
       )}
     </>

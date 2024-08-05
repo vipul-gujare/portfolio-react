@@ -8,6 +8,7 @@ import { MobileIcon } from "./assets/MobileIcon";
 import { FilePdfIcon } from "./assets/FilePdfIcon";
 import { CodeWindowIcon } from "./assets/CodeWindowIcon";
 import { JsonIcon } from "./assets/JsonIcon";
+import { useMainContainerContext } from "../../state/useMainContainerContext";
 
 const Work: IDropdownItem = {
   title: "Work",
@@ -16,14 +17,17 @@ const Work: IDropdownItem = {
     {
       title: "Tim Hortons",
       icon: <MobileIcon fill={Colors.ICON_BLUE} />,
+      textToDisplay: "Tim Hortons",
     },
     {
       title: "NPH Technologies",
       icon: <CloudIcon fill={Colors.ICON_BLUE} />,
+      textToDisplay: "NPH Technologies",
     },
     {
       title: "Zeus Learning",
       icon: <CloudIcon fill={Colors.ICON_BLUE} />,
+      textToDisplay: "Zeus Learning",
     },
   ],
 };
@@ -35,10 +39,12 @@ const Education: IDropdownItem = {
     {
       title: "Post Graduate Diploma",
       icon: <CodeWindowIcon fill={Colors.ICON_PURPLE} />,
+      textToDisplay: "PGD",
     },
     {
       title: "Bachelors of Engineering",
       icon: <CodeWindowIcon fill={Colors.ICON_PURPLE} />,
+      textToDisplay: "BE",
     },
   ],
 };
@@ -46,19 +52,45 @@ const Education: IDropdownItem = {
 const Resume: IDropdownItem = {
   title: "Resume.pdf",
   icon: <FilePdfIcon fill={Colors.ICON_RED} />,
+  textToDisplay: "Resume",
 };
 
 const About: IDropdownItem = {
   title: "ABOUT_ME.md",
   icon: <InfoIcon fill={Colors.ICON_BLUE} />,
+  textToDisplay: `
+  
+  About Me
+  `,
 };
 
 const Skills: IDropdownItem = {
   title: "Skills.json",
   icon: <JsonIcon fill={Colors.ICON_YELLOW} />,
+  textToDisplay: `{
+    "frontend": {
+      "ReactNative": "Advanced",
+      "ReactJs": "Advanced",
+      "Expo": "Advanced",
+      "TypeScript/JavaScript": "Advanced",
+    },
+    "backend": {
+      "MySQL": "Intermediate",
+      "MongoDB": "Beginner",
+    }
+}`,
 };
 
+const items = [
+  { ...Work },
+  { ...Education },
+  { ...Resume },
+  { ...About },
+  { ...Skills },
+];
+
 export const HamburgerMenu = () => {
+  const { setSelectedText } = useMainContainerContext();
   return (
     <div
       style={{
@@ -108,15 +140,10 @@ export const HamburgerMenu = () => {
             {
               title: "PORTFOLIO",
               initialIsOpen: true,
-              items: [
-                { ...Work },
-                { ...Education },
-                { ...Resume },
-                { ...About },
-                { ...Skills },
-              ],
+              items: items,
             },
           ]}
+          onPress={setSelectedText}
         />
       </div>
     </div>
