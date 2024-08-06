@@ -9,6 +9,7 @@ import { FilePdfIcon } from "./assets/FilePdfIcon";
 import { CodeWindowIcon } from "./assets/CodeWindowIcon";
 import { JsonIcon } from "./assets/JsonIcon";
 import { useMainContainerContext } from "../../state/useMainContainerContext";
+import ResumePdf from "../../assets/Vipul_Gujare_Resume.pdf";
 
 const Work: IDropdownItem = {
   title: "Work",
@@ -52,7 +53,9 @@ const Education: IDropdownItem = {
 const Resume: IDropdownItem = {
   title: "Resume.pdf",
   icon: <FilePdfIcon fill={Colors.ICON_RED} />,
-  textToDisplay: "Resume",
+  onPress: () => {
+    window.open(ResumePdf, "_blank", "noreferrer");
+  },
 };
 
 const About: IDropdownItem = {

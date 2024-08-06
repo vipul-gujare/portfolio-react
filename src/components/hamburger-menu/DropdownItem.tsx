@@ -6,7 +6,7 @@ export type IDropdownItem = {
   title: string;
   nestingLevel?: number;
   initialIsOpen?: boolean;
-  onPress?: (textContent: string) => void;
+  onPress?: (textContent?: string) => void;
 } & (
   | {
       items: IDropdownItem[];
@@ -15,7 +15,7 @@ export type IDropdownItem = {
     }
   | {
       icon: JSX.Element;
-      textToDisplay: string;
+      textToDisplay?: string;
       items?: never;
     }
 );
@@ -34,6 +34,10 @@ export const DropdownItem = ({
   const handlePress = () => {
     if (onPress && textToDisplay) {
       onPress(textToDisplay);
+      return;
+    }
+    if (onPress) {
+      onPress();
       return;
     }
     if (hasItems) {
@@ -96,7 +100,17 @@ export const DropdownItem = ({
             }}
           ></div>
           {items.map(
-            ({ icon, title, items, initialIsOpen, textToDisplay }, index) => (
+            (
+              {
+                icon,
+                title,
+                items,
+                initialIsOpen,
+                textToDisplay,
+                onPress: itemOnPress,
+              },
+              index
+            ) => (
               // @ts-expect-error Type '{ title: string; icon: Element | undefined; initialIsOpen: boolean | undefined; items: IDropdownItem[] | undefined; key: string; }' is not assignable to type 'IntrinsicAttributes & IDropdownItem'.
               <DropdownItem
                 title={title}
@@ -105,7 +119,7 @@ export const DropdownItem = ({
                 items={items}
                 initialIsOpen={initialIsOpen}
                 nestingLevel={nestingLevel + 1}
-                onPress={onPress}
+                onPress={itemOnPress ?? onPress}
                 textToDisplay={textToDisplay}
               />
             )
