@@ -78,10 +78,19 @@ export const Skills: IDropdownItem = {
   textToDisplay: `
   {
     "frontend": {
-        "ReactNative": "Advanced",
         "ReactJs": "Advanced",
+        "JavaScript": "Advanced",
+        "TypeScript": "Advanced",
+    },
+    "mobile-apps": {
+        "React-Native": "Advanced",
         "Expo": "Advanced",
-        "TypeScript/JavaScript": "Advanced",
+       "Expo-Native-Plugins": "Advanced",
+    },
+    "documentation": "Intermediate",
+    "middleware": {
+        "Java": "Intermediate",
+        "NodeJS": "Beginner",
     },
     "backend": {
         "MySQL": "Intermediate",
