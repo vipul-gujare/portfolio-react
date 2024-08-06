@@ -12,8 +12,8 @@ export const MainContainerContext = createContext<IMainContainerContext>({
 });
 
 export const MainContainerProvider = ({ children }: PropsWithChildren) => {
-  const [selectedText, setSelectedText] = useState<string>(
-    About.textToDisplay ?? ""
+  const [selectedText, setSelectedText] = useState<string | undefined>(
+    About.textToDisplay
   );
 
   return (
