@@ -62,9 +62,15 @@ const About: IDropdownItem = {
   title: "ABOUT_ME.md",
   icon: <InfoIcon fill={Colors.ICON_BLUE} />,
   textToDisplay: `
+  Hi, I'm a Senior Software Engineer, and front-end development is my jam. 
+
+I started my career in Mumbai, India, where I worked with a bunch of clients from the West. 
+That experience led me to move to Canada during the pandemic, 
+where I now work as a cross-platform mobile app developer for one of Canada's biggest coffee chains. 
   
-  About Me
-  `,
+I'm looking forward to connecting with you, so please feel free to reach out! 
+  
+When I'm not coding, you can find me riding my Onewheel. (If you ride one too, let's connect!)`,
 };
 
 const Skills: IDropdownItem = {
