@@ -162,8 +162,10 @@ export const HamburgerMenu = () => {
                 cursor: "pointer",
               }}
               key={label}
+              title={label}
               onClick={handlePress}
               onKeyUp={(event) => callIfEnterOrSpace(event, handlePress)}
+              tabIndex={0}
             >
               {icon}
             </div>
