@@ -22,8 +22,8 @@ export const MainContainer = () => {
         {selectedText
           ?.trim()
           .split("\n")
-          .map((singleLineText) => (
-            <div key={singleLineText}>{singleLineText}</div>
+          .map((singleLineText, index) => (
+            <div key={singleLineText + index}>{singleLineText}</div>
           ))}
       </pre>
     </div>
