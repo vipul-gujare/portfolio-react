@@ -10,6 +10,10 @@ import { CodeWindowIcon } from "./assets/CodeWindowIcon";
 import { JsonIcon } from "./assets/JsonIcon";
 import { useMainContainerContext } from "../../state/useMainContainerContext";
 import ResumePdf from "../../assets/Vipul_Gujare_Resume.pdf";
+import { useState } from "react";
+import { GitHubIcon } from "./assets/GitHubIcon";
+import { callIfEnterOrSpace, openInNewTab } from "../../utils";
+import { EmailIcon } from "./assets/EmailIcon";
 
 const Work: IDropdownItem = {
   title: "Work",
@@ -54,7 +58,7 @@ const Resume: IDropdownItem = {
   title: "Resume.pdf",
   icon: <FilePdfIcon fill={Colors.ICON_RED} />,
   onPress: () => {
-    window.open(ResumePdf, "_blank", "noreferrer");
+    openInNewTab(ResumePdf);
   },
 };
 
@@ -98,8 +102,38 @@ const items = [
   { ...Skills },
 ];
 
+interface HamburgerIcon {
+  icon: JSX.Element;
+  label: string;
+  onPress?: () => void;
+  isActive?: boolean;
+}
+const hamburgerIcons: HamburgerIcon[] = [
+  {
+    icon: <ExplorerIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
+    label: "Explore",
+    isActive: true,
+  },
+  {
+    icon: <GitHubIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
+    label: "GitHub",
+    onPress: () => {
+      openInNewTab("https://github.com/vipul-gujare");
+    },
+  },
+  {
+    icon: <EmailIcon fill={Colors.TEXT_LIGHT_ACTIVE} />,
+    label: "Email",
+    onPress: () => {
+      openInNewTab("mailto:vipulgujare@gmail.com");
+    },
+  },
+];
+
 export const HamburgerMenu = () => {
   const { setSelectedText } = useMainContainerContext();
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
   return (
     <div
       style={{
@@ -116,45 +150,58 @@ export const HamburgerMenu = () => {
           border: `1px solid ${Colors.BORDER_LIGHT}`,
         }}
       >
+        {hamburgerIcons.map(({ icon, label, onPress, isActive }) => {
+          const handlePress = onPress
+            ? onPress
+            : () => setIsOpen((prev) => !prev);
+          return (
+            <div
+              style={{
+                ...(isActive && { borderLeft: `2px solid ${Colors.ACCENT}` }),
+                padding: "0.5rem",
+                cursor: "pointer",
+              }}
+              key={label}
+              onClick={handlePress}
+              onKeyUp={(event) => callIfEnterOrSpace(event, handlePress)}
+            >
+              {icon}
+            </div>
+          );
+        })}
+      </div>
+      {isOpen && (
         <div
           style={{
-            borderLeft: `2px solid ${Colors.ACCENT}`,
+            borderWidth: "1px 1px 1px 0px",
+            borderColor: Colors.BORDER_LIGHT,
+            borderStyle: "solid",
             padding: "0.5rem",
+            flexDirection: "column",
+            width: "20vw",
           }}
         >
-          <ExplorerIcon fill={Colors.TEXT_LIGHT_ACTIVE} />
+          <div
+            style={{
+              textTransform: "uppercase",
+              fontSize: "0.75rem",
+              padding: "0.5rem 0.2rem",
+            }}
+          >
+            Explorer
+          </div>
+          <Dropdown
+            items={[
+              {
+                title: "PORTFOLIO",
+                initialIsOpen: true,
+                items: items,
+              },
+            ]}
+            onPress={setSelectedText}
+          />
         </div>
-      </div>
-      <div
-        style={{
-          borderWidth: "1px 1px 1px 0px",
-          borderColor: Colors.BORDER_LIGHT,
-          borderStyle: "solid",
-          padding: "0.5rem",
-          flexDirection: "column",
-          width: "20vw",
-        }}
-      >
-        <div
-          style={{
-            textTransform: "uppercase",
-            fontSize: "0.75rem",
-            padding: "0.5rem 0.2rem",
-          }}
-        >
-          Explorer
-        </div>
-        <Dropdown
-          items={[
-            {
-              title: "PORTFOLIO",
-              initialIsOpen: true,
-              items: items,
-            },
-          ]}
-          onPress={setSelectedText}
-        />
-      </div>
+      )}
     </div>
   );
 };
