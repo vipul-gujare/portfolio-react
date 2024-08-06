@@ -1,4 +1,5 @@
 import { PropsWithChildren, createContext, useState } from "react";
+import { About } from "../components/hamburger-menu/dropdown-items";
 
 export interface IMainContainerContext {
   selectedText: string | undefined;
@@ -11,7 +12,9 @@ export const MainContainerContext = createContext<IMainContainerContext>({
 });
 
 export const MainContainerProvider = ({ children }: PropsWithChildren) => {
-  const [selectedText, setSelectedText] = useState<string>();
+  const [selectedText, setSelectedText] = useState<string>(
+    About.textToDisplay ?? ""
+  );
 
   return (
     <MainContainerContext.Provider
