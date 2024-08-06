@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Colors } from "../../constants";
 import { ChevronDownIcon } from "./assets/ChevronDownIcon";
+import { callIfEnterOrSpace } from "../../utils";
 
 export type IDropdownItem = {
   title: string;
@@ -64,11 +65,7 @@ export const DropdownItem = ({
         tabIndex={0}
         role="button"
         onClick={handlePress}
-        onKeyUp={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            handlePress();
-          }
-        }}
+        onKeyUp={(event) => callIfEnterOrSpace(event, handlePress)}
       >
         {hasItems ? (
           <div
