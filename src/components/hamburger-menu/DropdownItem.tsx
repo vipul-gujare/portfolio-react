@@ -33,6 +33,10 @@ export const DropdownItem = ({
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
   const hasItems = !!items?.length;
   const handlePress = () => {
+    if (hasItems) {
+      setIsOpen((prev) => !prev);
+      return;
+    }
     if (onPress && textToDisplay) {
       onPress(textToDisplay);
       return;
@@ -40,9 +44,6 @@ export const DropdownItem = ({
     if (onPress) {
       onPress();
       return;
-    }
-    if (hasItems) {
-      setIsOpen((prev) => !prev);
     }
   };
   return (
