@@ -1,8 +1,9 @@
-import { Colors } from "../constants";
+import { Colors, TabContentMap } from "../constants";
 import { useMainContainerContext } from "../state/useMainContainerContext";
 
 export const MainContainer = () => {
-  const { selectedText } = useMainContainerContext();
+  const { selectedTab } = useMainContainerContext();
+  const selectedText = TabContentMap.get(selectedTab);
   return (
     <div
       style={{

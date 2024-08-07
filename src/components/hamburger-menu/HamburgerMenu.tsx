@@ -40,7 +40,7 @@ const hamburgerIcons: HamburgerIcon[] = [
 ];
 
 export const HamburgerMenu = () => {
-  const { setSelectedText } = useMainContainerContext();
+  const { setSelectedTab } = useMainContainerContext();
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   return (
@@ -109,7 +109,11 @@ export const HamburgerMenu = () => {
                 items: DropdownItems,
               },
             ]}
-            onPress={setSelectedText}
+            onPress={(tab) => {
+              if (tab) {
+                setSelectedTab(tab);
+              }
+            }}
           />
         </div>
       )}

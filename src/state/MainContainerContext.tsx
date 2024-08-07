@@ -1,26 +1,24 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { About } from "../components/hamburger-menu/dropdown-items";
+import { Tab } from "../types";
 
 export interface IMainContainerContext {
-  selectedText: string | undefined;
-  setSelectedText: ReturnType<typeof useState<string>>[1];
+  selectedTab: Tab;
+  setSelectedTab: (tab: Tab) => void;
 }
 
 export const MainContainerContext = createContext<IMainContainerContext>({
-  selectedText: "",
-  setSelectedText: () => {},
+  selectedTab: "ABOUT_ME.md",
+  setSelectedTab: () => {},
 });
 
 export const MainContainerProvider = ({ children }: PropsWithChildren) => {
-  const [selectedText, setSelectedText] = useState<string | undefined>(
-    About.textToDisplay
-  );
+  const [selectedTab, setSelectedTab] = useState<Tab>("ABOUT_ME.md");
 
   return (
     <MainContainerContext.Provider
       value={{
-        selectedText,
-        setSelectedText,
+        selectedTab,
+        setSelectedTab,
       }}
     >
       {children}

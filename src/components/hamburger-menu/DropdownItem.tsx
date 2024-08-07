@@ -2,21 +2,20 @@ import { useState } from "react";
 import { Colors } from "../../constants";
 import { ChevronDownIcon } from "./assets/ChevronDownIcon";
 import { callIfEnterOrSpace } from "../../utils";
+import { Tab } from "../../types";
 
 export type IDropdownItem = {
-  title: string;
+  title: Tab;
   nestingLevel?: number;
   initialIsOpen?: boolean;
-  onPress?: (textContent?: string) => void;
+  onPress?: (tab?: Tab) => void;
 } & (
   | {
       items: IDropdownItem[];
       icon?: never;
-      textToDisplay?: never;
     }
   | {
       icon: JSX.Element;
-      textToDisplay?: string;
       items?: never;
     }
 );
@@ -28,7 +27,6 @@ export const DropdownItem = ({
   nestingLevel = 0,
   items,
   onPress,
-  textToDisplay,
 }: IDropdownItem) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialIsOpen);
   const hasItems = !!items?.length;
@@ -37,8 +35,8 @@ export const DropdownItem = ({
       setIsOpen((prev) => !prev);
       return;
     }
-    if (onPress && textToDisplay) {
-      onPress(textToDisplay);
+    if (onPress?.length) {
+      onPress(title);
       return;
     }
     if (onPress) {
@@ -99,14 +97,7 @@ export const DropdownItem = ({
           ></div>
           {items.map(
             (
-              {
-                icon,
-                title,
-                items,
-                initialIsOpen,
-                textToDisplay,
-                onPress: itemOnPress,
-              },
+              { icon, title, items, initialIsOpen, onPress: itemOnPress },
               index
             ) => (
               // @ts-expect-error Type '{ title: string; icon: Element | undefined; initialIsOpen: boolean | undefined; items: IDropdownItem[] | undefined; key: string; }' is not assignable to type 'IntrinsicAttributes & IDropdownItem'.
@@ -118,7 +109,6 @@ export const DropdownItem = ({
                 initialIsOpen={initialIsOpen}
                 nestingLevel={nestingLevel + 1}
                 onPress={itemOnPress ?? onPress}
-                textToDisplay={textToDisplay}
               />
             )
           )}
