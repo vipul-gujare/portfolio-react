@@ -9,8 +9,26 @@ export const MainContainer = () => {
       style={{
         backgroundColor: Colors.BACKGROUND_LIGHT,
         flex: 1,
+        flexDirection: "column",
       }}
     >
+      <div
+        style={{
+          backgroundColor: Colors.DARK,
+        }}
+      >
+        <div
+          style={{
+            borderTop: `2px solid ${Colors.ACCENT}`,
+            display: "inline-flex",
+            width: "fit-content",
+            padding: "0.5rem 1rem",
+            backgroundColor: Colors.BACKGROUND_LIGHT,
+          }}
+        >
+          {selectedTab}
+        </div>
+      </div>
       <pre
         contentEditable={true}
         spellCheck={false}
