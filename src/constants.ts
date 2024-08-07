@@ -36,10 +36,6 @@ const SkillsContent = `
         "Expo": "Advanced",
        "Expo-Native-Plugins": "Advanced",
     },
-    "middleware": {
-        "Java": "Intermediate",
-        "NodeJS": "Beginner",
-    },
     "backend": {
         "REST APIs": "Intermediate",
         "GraphQL": "Beginner",
@@ -49,7 +45,10 @@ const SkillsContent = `
     "tools-and-practices": {
         "Unit Testing": "Advanced",
         "Code Documentation": "Advanced",
-    }
+    },
+    "middleware": {
+      "Java": "Intermediate",
+  },
 }`;
 
 export const TabContentMap = new Map<Tab, string>([
