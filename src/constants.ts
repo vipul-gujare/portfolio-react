@@ -36,14 +36,19 @@ const SkillsContent = `
         "Expo": "Advanced",
        "Expo-Native-Plugins": "Advanced",
     },
-    "documentation": "Intermediate",
     "middleware": {
         "Java": "Intermediate",
         "NodeJS": "Beginner",
     },
     "backend": {
+        "REST APIs": "Intermediate",
+        "GraphQL": "Beginner",
         "MySQL": "Intermediate",
         "MongoDB": "Beginner",
+    },
+    "tools-and-practices": {
+        "Unit Testing": "Advanced",
+        "Code Documentation": "Advanced",
     }
 }`;
 
