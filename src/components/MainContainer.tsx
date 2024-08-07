@@ -36,6 +36,7 @@ export const MainContainer = () => {
         suppressContentEditableWarning
         style={{
           width: "100%",
+          overflow: "auto",
         }}
       >
         {selectedText
