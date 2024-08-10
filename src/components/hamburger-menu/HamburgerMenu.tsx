@@ -39,6 +39,8 @@ const hamburgerIcons: HamburgerIcon[] = [
   },
 ];
 
+const ICON_CONTAINER_WIDTH = "2.5rem";
+
 export const HamburgerMenu = () => {
   const { setSelectedTab, isMobileView } = useMainContainerContext();
   const [isOpen, setIsOpen] = useState<boolean>(!isMobileView);
@@ -47,6 +49,9 @@ export const HamburgerMenu = () => {
     <div
       style={{
         flexDirection: "row",
+        position: "relative",
+        backgroundColor: Colors.DARK,
+        height: "100vh",
       }}
     >
       <div
@@ -55,8 +60,8 @@ export const HamburgerMenu = () => {
           justifyContent: "flex-start",
           alignItems: "center",
           position: "static",
-          height: "100vh",
           border: `1px solid ${Colors.BORDER_LIGHT}`,
+          width: ICON_CONTAINER_WIDTH,
         }}
       >
         {hamburgerIcons.map(({ icon, label, onPress, isActive }) => {
@@ -89,7 +94,14 @@ export const HamburgerMenu = () => {
             borderStyle: "solid",
             padding: "0.5rem",
             flexDirection: "column",
-            width: "20vw",
+            flex: 1,
+            minWidth: "15rem",
+            backgroundColor: Colors.DARK,
+            height: "100%",
+            ...(isMobileView && {
+              position: "absolute",
+              left: ICON_CONTAINER_WIDTH,
+            }),
           }}
         >
           <div
