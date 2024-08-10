@@ -55,3 +55,5 @@ export const TabContentMap = new Map<Tab, string>([
   ["ABOUT_ME.md", AboutContent],
   ["Skills.json", SkillsContent],
 ]);
+
+export const MOBILE_VIEW_WIDTH = 980;
