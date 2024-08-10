@@ -40,8 +40,8 @@ const hamburgerIcons: HamburgerIcon[] = [
 ];
 
 export const HamburgerMenu = () => {
-  const { setSelectedTab } = useMainContainerContext();
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const { setSelectedTab, isMobileView } = useMainContainerContext();
+  const [isOpen, setIsOpen] = useState<boolean>(!isMobileView);
 
   return (
     <div
