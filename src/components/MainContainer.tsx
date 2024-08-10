@@ -8,6 +8,7 @@ export const MainContainer = () => {
     <div
       style={{
         backgroundColor: Colors.BACKGROUND_LIGHT,
+        border: `1px solid ${Colors.BORDER_LIGHT}`,
         flex: 1,
         flexDirection: "column",
       }}
@@ -37,6 +38,7 @@ export const MainContainer = () => {
         style={{
           width: "100%",
           overflow: "auto",
+          flex: 1,
         }}
       >
         {selectedText

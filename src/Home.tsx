@@ -16,9 +16,16 @@ export const Home = () => {
     >
       <MainContainerProvider>
         <HamburgerMenu />
-        <MainContainer />
+        <div
+          style={{
+            flexDirection: "column",
+            flex: 1,
+          }}
+        >
+          <MainContainer />
+          <Terminal />
+        </div>
       </MainContainerProvider>
-      <Terminal />
     </div>
   );
 };
