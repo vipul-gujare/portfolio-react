@@ -11,6 +11,7 @@ export const Home = () => {
         backgroundColor: Colors.DARK,
         flex: 1,
         color: Colors.TEXT_LIGHT_ACTIVE,
+        width: "100%",
       }}
     >
       <MainContainerProvider>
