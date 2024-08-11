@@ -39,7 +39,7 @@ const hamburgerIcons: HamburgerIcon[] = [
   },
 ];
 
-const ICON_CONTAINER_WIDTH = "2.5rem";
+export const ICON_CONTAINER_WIDTH = "2.5rem";
 
 export const HamburgerMenu = () => {
   const { setSelectedTab, isMobileView } = useMainContainerContext();

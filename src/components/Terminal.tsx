@@ -10,6 +10,7 @@ export const Terminal = () => {
         border: `1px solid ${Colors.BORDER_LIGHT}`,
         height: "30vh",
         flexDirection: "column",
+        maxWidth: "100%",
       }}
     >
       <div
@@ -52,7 +53,6 @@ export const Terminal = () => {
           paddingLeft: "0.5rem",
           marginTop: "0.5rem",
           overflow: "auto",
-          maxWidth: `calc(100% - 2rem)`,
         }}
       >
         <code>

@@ -1,4 +1,7 @@
-import { HamburgerMenu } from "./components/hamburger-menu/HamburgerMenu";
+import {
+  HamburgerMenu,
+  ICON_CONTAINER_WIDTH,
+} from "./components/hamburger-menu/HamburgerMenu";
 import { MainContainer } from "./components/MainContainer";
 import { Terminal } from "./components/Terminal";
 import { Colors } from "./constants";
@@ -20,7 +23,7 @@ export const Home = () => {
           style={{
             flexDirection: "column",
             flex: 1,
-            maxWidth: "100%",
+            maxWidth: `calc(100% - ${ICON_CONTAINER_WIDTH})`,
           }}
         >
           <MainContainer />
