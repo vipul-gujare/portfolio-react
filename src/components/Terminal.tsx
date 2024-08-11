@@ -1,6 +1,8 @@
 import { Colors } from "../constants";
+import { useMainContainerContext } from "../state/useMainContainerContext";
 
 export const Terminal = () => {
+  const { isMobileView } = useMainContainerContext();
   return (
     <div
       style={{
@@ -16,7 +18,11 @@ export const Terminal = () => {
           fontSize: "0.75rem",
         }}
       >
-        {["PROBLEMS", "OUTPUT", "TERMINAL", "COMMENTS"].map((txt) => (
+        {[
+          "PROBLEMS",
+          "TERMINAL",
+          ...(!isMobileView ? ["COMMENTS", "OUTPUT"] : []),
+        ].map((txt) => (
           <div
             key={txt}
             style={{
@@ -40,7 +46,15 @@ export const Terminal = () => {
           &#10005;
         </div>
       </div>
-      <div style={{ flex: 1, paddingLeft: "0.5rem", marginTop: "0.5rem" }}>
+      <div
+        style={{
+          flex: 1,
+          paddingLeft: "0.5rem",
+          marginTop: "0.5rem",
+          overflow: "auto",
+          maxWidth: `calc(100% - 2rem)`,
+        }}
+      >
         <code>
           <span style={{ color: Colors.ICON_YELLOW }}>vipulgujare:$</span> Hi
           there! Welcome to my website!

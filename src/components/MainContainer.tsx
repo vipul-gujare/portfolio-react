@@ -30,24 +30,29 @@ export const MainContainer = () => {
           {selectedTab}
         </div>
       </div>
-      <pre
-        contentEditable={true}
-        spellCheck={false}
-        className="main-container-editable"
-        suppressContentEditableWarning
+      <div
         style={{
-          width: "100%",
           overflow: "auto",
           flex: 1,
         }}
       >
-        {selectedText
-          ?.trim()
-          .split("\n")
-          .map((singleLineText, index) => (
-            <div key={singleLineText + index}>{singleLineText}</div>
-          ))}
-      </pre>
+        <pre
+          contentEditable={true}
+          spellCheck={false}
+          className="main-container-editable"
+          suppressContentEditableWarning
+          style={{
+            flex: 1,
+          }}
+        >
+          {selectedText
+            ?.trim()
+            .split("\n")
+            .map((singleLineText, index) => (
+              <div key={singleLineText + index}>{singleLineText}</div>
+            ))}
+        </pre>
+      </div>
     </div>
   );
 };
