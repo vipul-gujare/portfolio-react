@@ -20,6 +20,7 @@ export const Home = () => {
           style={{
             flexDirection: "column",
             flex: 1,
+            maxWidth: "100%",
           }}
         >
           <MainContainer />
