@@ -65,10 +65,31 @@ Throughout the process, we were very determined about documenting unit testing p
 streamlining onboarding for new developers and improving code quality.
 `;
 
+const NphContent = `
+This was an interesting opportunity where I got to work with a startup as one of the founding engineers.
+
+We built a COVID help app and deployed it across multiple hospitals in the UK.
+
+Managed internationalization and localization setup across all platforms for seamless global deployment.`;
+
+const ZeusContent = `
+Zeus eLearning will always have a special place in my heart as it was my first ever job fresh out of the college!
+
+I Handled full stack implementation of a US based platform that serves eLearning solutions to hundreds of counties nationwide. 
+
+On another project, we implemented fully custom design system components written in vanilla JavaScript from scratch
+with zero dependencies that handled complex operations like sorting.
+
+My tenure with Zeus also allowed me the freedom to start a mobile application development department in the organization,
+working along side the C-suite members from different countries.
+`;
+
 export const TabContentMap = new Map<Tab, string>([
   ["ABOUT_ME.md", AboutContent],
   ["Skills.json", SkillsContent],
   ["Tim Hortons", TimHortonsContent],
+  ["NPH Technologies", NphContent],
+  ["Zeus Learning", ZeusContent],
 ]);
 
 export const MOBILE_VIEW_WIDTH = 600;
