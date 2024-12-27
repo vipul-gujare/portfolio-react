@@ -51,9 +51,24 @@ const SkillsContent = `
   },
 }`;
 
+const TimHortonsContent = `
+Here at Tims, I had the opportunity to work with a diverse group of talented individuals. 
+
+One of the hardest challenges was leading the full refactor of the Roll Up To Win campaign codebase, 
+mentoring two developers along the way.
+
+Set up monitoring and logging for the app, reducing major incidents from three per month to zero.
+
+We built an abstraction layer, cutting the time-to-market for critical services from 1.5 months to 4 days.
+
+Throughout the process, we were very determined about documenting unit testing practices, 
+streamlining onboarding for new developers and improving code quality.
+`;
+
 export const TabContentMap = new Map<Tab, string>([
   ["ABOUT_ME.md", AboutContent],
   ["Skills.json", SkillsContent],
+  ["Tim Hortons", TimHortonsContent],
 ]);
 
 export const MOBILE_VIEW_WIDTH = 600;
