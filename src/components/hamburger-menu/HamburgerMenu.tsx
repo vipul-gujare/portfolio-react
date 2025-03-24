@@ -65,9 +65,7 @@ export const HamburgerMenu = () => {
         }}
       >
         {hamburgerIcons.map(({ icon, label, onPress, isActive }) => {
-          const handlePress = onPress
-            ? onPress
-            : () => setIsOpen((prev) => !prev);
+          const handlePress = onPress ?? (() => setIsOpen((prev) => !prev));
           return (
             <div
               style={{
@@ -80,6 +78,7 @@ export const HamburgerMenu = () => {
               onClick={handlePress}
               onKeyUp={(event) => callIfEnterOrSpace(event, handlePress)}
               tabIndex={0}
+              role="button"
             >
               {icon}
             </div>
