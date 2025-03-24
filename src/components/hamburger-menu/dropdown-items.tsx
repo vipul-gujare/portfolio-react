@@ -15,6 +15,10 @@ export const Work: IDropdownItem = {
   initialIsOpen: true,
   items: [
     {
+      title: "Hello Fresh",
+      icon: <MobileIcon fill={Colors.ICON_BLUE} />,
+    },
+    {
       title: "Tim Hortons",
       icon: <MobileIcon fill={Colors.ICON_BLUE} />,
     },
