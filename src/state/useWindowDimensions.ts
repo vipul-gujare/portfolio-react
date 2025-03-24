@@ -25,12 +25,12 @@ const getWindowDimensions = (): Dimensions => {
 };
 
 const useWindowDimensions = () => {
-  const [windowDimensions, setWindowDimension] = useState(
+  const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
 
   const memoizedSetWindowDimension = useCallback(() => {
-    setWindowDimension(getWindowDimensions());
+    setWindowDimensions(getWindowDimensions());
   }, []);
 
   const debouncedMemoizedSetWindowDimension = debounce(() => {
