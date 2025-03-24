@@ -11,6 +11,7 @@ export type Tab =
   | "Skills.json"
   | "Post Graduate Diploma"
   | "Bachelors of Engineering"
+  | "Hello Fresh"
   | "Tim Hortons"
   | "NPH Technologies"
   | "Zeus Learning"

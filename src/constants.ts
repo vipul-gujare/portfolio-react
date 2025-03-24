@@ -51,6 +51,10 @@ const SkillsContent = `
   },
 }`;
 
+const HelloFreshContent = `
+Something interesting is cooking.....
+`;
+
 const TimHortonsContent = `
 Here at Tims, I had the opportunity to work with a diverse group of talented individuals. 
 
@@ -87,6 +91,7 @@ working along side the C-suite members from different countries.
 export const TabContentMap = new Map<Tab, string>([
   ["ABOUT_ME.md", AboutContent],
   ["Skills.json", SkillsContent],
+  ["Hello Fresh", HelloFreshContent],
   ["Tim Hortons", TimHortonsContent],
   ["NPH Technologies", NphContent],
   ["Zeus Learning", ZeusContent],
